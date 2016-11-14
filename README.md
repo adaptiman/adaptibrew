@@ -40,4 +40,3 @@ sudo ./adaptibrew
  * [MinimalModbus](https://minimalmodbus.readthedocs.io/en/master/) - Python library to communicate over RS485. Also has a custom driver for the Omega CN7500 PID controller.
 
 ###Demonstration
-[Demonstration Video](https://youtu.be/usqvsCGNW-Y)
