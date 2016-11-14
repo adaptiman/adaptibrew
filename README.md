@@ -1,13 +1,13 @@
 # adaptibrew
 #####Author: David Sweeney
-#####Email:  adaptiman@tamu.edu
+#####Email:  me@adaptiman.com
 
 ###Overview:
 Adaptibrew is a Python based toolset used to control varioius processes in my custom brewery. The toolset uses a RPiv.2 processor coupled with an RS485 shield used to control various electrical valves and process devices such as the Omega CN7500 proportional PID controller (used to control RIMS).
 
 ###License:
 #####Author: David Sweeney
-#####Email:  adaptiman@tamu.edu
+#####Email:  me@adaptiman.com
 adaptibrew is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International license [Copy Found Here](http://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 ###Users/Audience:
@@ -37,6 +37,7 @@ sudo ./adaptibrew
 
 ###Prior Work and Libraries:
  * [WiringPi](http://wiringpi.com) - Raspberry Pi GPIO library for C
+ * [MinimalModbus](https://minimalmodbus.readthedocs.io/en/master/) - Python library to communicate over RS485. Also has a custom driver for the Omega CN7500 PID controller.
 
 ###Demonstration
 [Demonstration Video](https://youtu.be/usqvsCGNW-Y)
