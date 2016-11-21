@@ -3,7 +3,7 @@ import serial
 import time
 
 port = "/dev/ttyAMA0"
-usart = serial.Serial (port,9600)
+usart = serial.Serial (port,19200)
 bytestring = "55AA0817020008012A77"
 message_bytes = bytestring.decode("hex")
 usart.write(message_bytes)
