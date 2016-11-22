@@ -17,13 +17,14 @@ def relay_toggle(relaynumber, onoff):
     #     else
     #     onoff = '00'
     #     pass
+    #  a change
     #command to turn on relay is 0x08 0x17
     #format is
     #MA0, MA1, 0x08, 0x17, CN, start number output (relaynumber), \
     #number of outputs (usually 0x01), 01, CS, MAE
     #need to do a checksum on
     #0x08, 0x17, CN, relaynumber, 0x01, 0x01
-    relaynumberhex = hex(relaynumber).replace('0x', '').zfill(2)
+    relaynumbezrhex = hex(relaynumber).replace('0x', '').zfill(2)
     str_to_checksum = '0817' + settings.CN + str(relaynumberhex) \
         + '01' + str(onoff).zfill(2)
     CS = _get_checksum(str_to_checksum)
