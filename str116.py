@@ -27,4 +27,4 @@ def relay_toggle(relaynumber, onoff):
     bytestring = settings.MA0 + settings.MA1 + str_to_checksum \
         + str(CS) + settings.MAE
     print(bytestring)
-    #_write_message(bytestring)
+    _write_message(bytestring)
