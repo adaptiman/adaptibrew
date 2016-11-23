@@ -8,4 +8,4 @@ timeout = 2
 MA0 = '55' #master start byte
 MA1 = 'AA' #master1 byte
 MAE = '77' #master end byte
-CN  = '02'  #byte rep for controller number
+CN  = '02'  #hex byte for controller number

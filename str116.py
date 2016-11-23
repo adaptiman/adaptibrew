@@ -19,17 +19,17 @@ def _write_message_with_response(data):
     message_bytes = data.decode("hex")
     try:
         usart.write(message_bytes)
-#        print usart.is_open  # True for opened
+        #print usart.is_open  # True for opened
         if usart.is_open:
             time.sleep(0.5)
             size = usart.inWaiting()
             if size:
                 data = usart.read(size)
-#                print binascii.hexlify(data)
+                #print binascii.hexlify(data)
             else:
-                print 'no data'
+                print('no data')
         else:
-            print 'usart not open'
+            print('usart not open')
     except IOError as e :
         print("Failed to write to the port. ({})".format(e))
     return binascii.hexlify(data)
@@ -67,3 +67,26 @@ def get_relay_status():
     print('relay status bytestring: ' + bytestring)
     relaystatus = _write_message_with_response(bytestring)[6:-4]
     print('relay status: ' + relaystatus)
+
+def set_baudrate():
+    """
+    This function changes the baudrate on the str116 controller card.
+    IMPORTANT! if you change the baudrate using this function, you MUST
+    update the baudrate listed in the settings file, or your communications
+    will not work. This is mainly a setup function that can be used to
+    initialize the controller.
+    Format of the bytestring is
+    MA0, MA1, 0x08, 0x33, CN, 0xAA, 0x55, newFC, CS, MAE
+    where
+    newFC (0 – 9)
+    0 – 300     1 – 600     2 – 1200        3 – 2400    4 – 4800
+    5 – 9600    6 – 19200   7 – 38400       8 – 57600   9 – 115200
+    """
+    #usart = serial.Serial (settings.port,settings.baudrate) #current settings
+    d = {'300':0,'600':1,'1200':2,'2400':3,'4800':4,'9600':5,'19200':6, \
+        '38400':7,'57600':8,'115200':9}
+    print(d)
+    bytestring = "55AA083302AA55064277" #set baudrate to 19200
+    print(bytestring)
+    #message_bytes = bytestring.decode("hex")
+    #usart.write(message_bytes)
