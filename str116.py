@@ -21,17 +21,18 @@ def _write_message_with_response(data):
         usart.write(message_bytes)
 #        print usart.is_open  # True for opened
         if usart.is_open:
-            time.sleep(1)
+            time.sleep(0.5)
             size = usart.inWaiting()
             if size:
                 data = usart.read(size)
-                print binascii.hexlify(data)
+#                print binascii.hexlify(data)
             else:
                 print 'no data'
         else:
             print 'usart not open'
     except IOError as e :
         print("Failed to write to the port. ({})".format(e))
+    return binascii.hexlify(data)
 
 def _get_checksum(data):
     checksum = sum(bytearray.fromhex(data))
@@ -64,4 +65,5 @@ def get_relay_status():
     bytestring = settings.MA0 + settings.MA1 + str_to_checksum \
         + str(CS) + settings.MAE
     print('relay status bytestring: ' + bytestring)
-    _write_message_with_response(bytestring)
+    relaystatus = _write_message_with_response(bytestring)[6:-4]
+    print('relay status: ' + relaystatus)
