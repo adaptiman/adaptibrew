@@ -4,6 +4,7 @@ port = "/dev/ttyAMA0"
 rimsaddressint = 1
 switchaddressint = 2
 baudrate = 19200
+timeout = 2
 MA0 = '55' #master start byte
 MA1 = 'AA' #master1 byte
 MAE = '77' #master end byte

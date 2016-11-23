@@ -6,9 +6,9 @@ import time
 
 n=0
 while n < 16:
-    str116.relay_toggle(n, 0)
+    str116.set_relay(n, 0)
     n+=1
-    str116.relay_toggle(n, 1)
+    str116.set_relay(n, 1)
     time.sleep(.25)
 
-str116.relay_toggle(15, 0)
+str116.set_relay(15, 0)
