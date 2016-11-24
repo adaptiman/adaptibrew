@@ -75,12 +75,6 @@ def set_baudrate():
     update the baudrate listed in the settings file, or your communications
     will not work. This is mainly a setup function that can be used to
     initialize the controller.
-    Format of the bytestring is
-    MA0, MA1, 0x08, 0x33, CN, 0xAA, 0x55, newFC, CS, MAE
-    where
-    newFC (0 – 9)
-    0 – 300     1 – 600     2 – 1200        3 – 2400    4 – 4800
-    5 – 9600    6 – 19200   7 – 38400       8 – 57600   9 – 115200
     """
     #usart = serial.Serial (settings.port,settings.baudrate) #current settings
     d = {'300':0,'600':1,'1200':2,'2400':3,'4800':4,'9600':5,'19200':6, \
