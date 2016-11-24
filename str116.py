@@ -10,6 +10,7 @@ def _write_message(data):
     message_bytes = data.decode("hex")
     try:
         usart.write(message_bytes)
+	print('success')
     except IOError as e :
         print("Failed to write to the port. ({})".format(e))
 
