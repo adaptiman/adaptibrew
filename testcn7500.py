@@ -9,4 +9,4 @@ print temperature
 
 ## Change temperature setpoint (SP) ##
 NEW_TEMPERATURE = 95
-instrument.write_register(24, NEW_TEMPERATURE, 1) # Registernumber, value, number of decimals for storage
+#instrument.write_register(24, NEW_TEMPERATURE, 1) # Registernumber, value, number of decimals for storage
