@@ -68,6 +68,17 @@ def get_relay_status():
     print('relay status bytestring: ' + bytestring)
     relaystatus = _write_message_with_response(bytestring)[6:-4]
     print('relay status: ' + relaystatus)
+    totalrelays = len(relaystatus)
+    print('total relays: ' + str(totalrelays/2))
+    print(relaystatus[0:2])
+    n = 0
+    while(n < totalrelays):
+        if relaystatus[n:2] is '00':
+            print('relay ' + relaystatus[n:2] + ': off')
+        else:
+            print('relay ' + relaystatus[n:2] + ': on')
+        n += 1
+
 
 def set_baudrate():
     """
