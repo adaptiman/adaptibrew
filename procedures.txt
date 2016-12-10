@@ -1,0 +1,42 @@
+PowerOn
+	turn PID off
+	turn pump off
+	turn RIMS relay ON
+	display status of all relays
+  display status of RIMS
+
+Heat Strike Water
+	Confirm strike water is in the mash tun -> response
+	confirm return manifold is in the mash tun -> response
+	confirm RIMS relay is on - if not, turn on
+	turn on pump
+	prompt for pump emergency stop (spacebar)
+	wait 30 seconds
+	confirm that strike water is circulating well -> response
+	input volume of water
+	input volume of grain
+	input desired mash temp
+	measure current strike water temp and save
+	calculate strike temp
+	set PID to strike temp
+	when strike temp is reached, sound alarm
+
+Mash
+	prompt to enter mash temp -> response
+	prompt to enter mash time (min) -> response
+	set PID SV to mash temp
+	begin mash timer
+	when timer expires, sound alarm
+
+Mashout
+	prompt to enter mashout temp -> response
+	set PID SV to mashout temp
+	monitor mash temp
+	when mashout temp is reached ->sound alarm
+
+Sparge
+	prompt that sparge water is heated to correct temp ->response
+	turn on sparge relay
+	wait 15 seconds
+	turn off RIMS relay (redirects to boil tun)
+	prompt to check the sparge balance (OK)
