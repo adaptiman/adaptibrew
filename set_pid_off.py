@@ -3,4 +3,7 @@ import omegacn7500
 import settings
 
 instrument = omegacn7500.OmegaCN7500(settings.port, settings.rimsaddressint) # port name, slave address
-instrument.stop()
+try:
+    instrument.stop()
+except:
+    raise

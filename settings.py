@@ -9,3 +9,7 @@ MA0 = '55' #master start byte
 MA1 = 'AA' #master1 byte
 MAE = '77' #master end byte
 CN  = '02'  #hex byte for controller number
+spargeToMashRelay = 0
+spargeRelay = 1
+rimsToMashRelay = 2
+pumpRelay = 3
