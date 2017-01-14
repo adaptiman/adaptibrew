@@ -10,7 +10,8 @@ def _write_message(data):
     message_bytes = data.decode("hex")
     try:
         usart.write(message_bytes)
-	print('success')
+        if settings.DEBUG:
+            print('success')
     except IOError as e :
         print("Failed to write to the port. ({})".format(e))
 
@@ -52,8 +53,23 @@ def set_relay(relaynumber, onoff):
     CS = _get_checksum(str_to_checksum)
     bytestring = settings.MA0 + settings.MA1 + str_to_checksum \
         + str(CS) + settings.MAE
-    print('set_relay bytestring: ' + bytestring)
+    if settings.DEBUG:
+        print('set_relay bytestring: ' + bytestring)
     _write_message(bytestring)
+
+def get_relay(relaynumber):
+    '''Get the status of the requested relay (true/false)'''
+    str_to_checksum = '0714' + settings.CN + '0010'
+    CS = _get_checksum(str_to_checksum)
+    bytestring = settings.MA0 + settings.MA1 + str_to_checksum \
+        + str(CS) + settings.MAE
+    relaystatus = _write_message_with_response(bytestring)[6:-4]
+    #print relaystatus
+    test = relaystatus[relaynumber*2:relaynumber*2+2]
+    if int(test) > 0:
+        return True
+    else:
+        return False
 
 def get_relay_status():
     #command to get the status of all of the relays in an array.

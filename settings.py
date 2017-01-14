@@ -13,3 +13,4 @@ spargeToMashRelay = 0
 spargeRelay = 1
 rimsToMashRelay = 2
 pumpRelay = 3
+DEBUG = False

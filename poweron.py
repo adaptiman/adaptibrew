@@ -9,6 +9,15 @@
 
 import set_pid_off
 import str116
+import click
 
-set_pid_off()
-str116.
+@click.command()
+def startup():
+    try:
+        set_pid_off()
+        click.echo("PID is OFF")
+    except:
+        click.echo("PID is ON")
+
+if __name__ == '__main__':
+    startup()
