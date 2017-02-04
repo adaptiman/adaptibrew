@@ -3,6 +3,7 @@
 import omegacn7500
 import str116
 import settings
+import sys
 
 # Connect to the PID instrument to get status values
 instr = omegacn7500.OmegaCN7500(settings.port,settings.rimsaddressint)
@@ -19,7 +20,7 @@ def main_loop():
         #print "You chose {}".format(choice)
         print
         if choice == 1:
-            print "TODO: SHOW SOME STATUS"
+            toggle_relay_menu()
         elif choice == 2:
             toggle_pump()
         elif choice == 3:
@@ -28,6 +29,9 @@ def main_loop():
             set_target_temp()
         elif choice == 5:
             select_stage()
+        elif choice == 9:
+            print "Goodbye!"
+            sys.exit()
         else:
             print "Invalid selection. Please choose the numbers above."
 
@@ -40,12 +44,49 @@ def show_main_menu():
     print '''
 Please select an option:
 
-   1. Show status info
+   1. Toggle valve relay
    2. Toggle pump (pump currently {})
    3. Toggle PID (PID currently {})
    4. Set PID target temp (currently {}; actual temp {})
    5. Set brewer stage (currently in RIMS)
+
+   9. Exit brew controller
 '''.format(PUMP_STATE, PID_STATE, TARGET_TEMP, CURRENT_TEMP)
+
+def toggle_relay_menu():
+    STATE_0 = 'ON' if str116.get_relay(settings.spargeToMashRelay) else 'OFF'
+    STATE_1 = 'ON' if str116.get_relay(settings.spargeRelay) else 'OFF'
+    STATE_2 = 'ON' if str116.get_relay(settings.rimsToMashRelay) else 'OFF'
+    print '''
+Please select an option:
+
+   0. Sparge-to-mash valve (currently {})
+   1. Sparge valve (currently {})
+   2. RIMS-to-mash valve (currently {})
+
+   9. Return to main menu
+'''.format(STATE_0, STATE_1, STATE_2)
+
+    choice = input("Select a valve from the choices above: ")
+    if choice == 9:
+        return
+    if isinstance(choice, int) and choice < 3:
+        toggle_relay(choice)
+    else:
+        print "Invalid option. Please select a number from the list above."
+        toggle_relay_menu()
+
+def toggle_relay(relay_address):
+    if isinstance(relay_address, int) and relay_address < 3:
+        if str116.get_relay(relay_address):
+            print 'Turning valve OFF . . . ',
+            str116.set_relay(relay_address, 0)
+        else:
+            print 'Turning valve ON . . . ',
+            str116.set_relay(relay_address, 1)
+        print 'DONE'
+    else:
+        print 'INVALID RELAY ADDRESS'
 
 def toggle_pump():
     if str116.get_relay(settings.pumpRelay):
@@ -54,6 +95,16 @@ def toggle_pump():
     else:
         print 'Turning pump ON . . . ',
         str116.set_relay(settings.pumpRelay, 1)
+    print 'DONE'
+
+def set_pump_on():
+    print 'Turning pump ON . . . ',
+    str116.set_relay(settings.pumpRelay, 1)
+    print 'DONE'
+
+def set_pump_off():
+    print 'Turning pump OFF . . . ',
+    str116.set_relay(settings.pumpRelay, 0)
     print 'DONE'
 
 def toggle_pid():
@@ -75,6 +126,8 @@ def select_stage():
    1. RIMS stage (Recirculating Infusion Mash System)
    2. Sparge stage
    3. Boil stage
+
+   9. Return to main menu
  '''
     stage_choice = input("Select a brew stage from the choices above: ")
     if stage_choice == 1:
@@ -83,6 +136,8 @@ def select_stage():
         set_sparge_stage()
     elif stage_choice == 3:
         set_boil_stage()
+    elif stage_choice == 9:
+        return
     else:
         print "Invalid option. Please select a number from the list above."
 
