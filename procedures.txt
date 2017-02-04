@@ -40,3 +40,4 @@ Sparge
 	wait 15 seconds
 	turn off RIMS relay (redirects to boil tun)
 	prompt to check the sparge balance (OK)
+	turn off sparge when boil kettle is at full volume

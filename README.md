@@ -32,7 +32,7 @@ You will also have to install WiringPi library. The library is at the bottom but
 ###Running:
 Simply run the following through a terminal or ssh.
 ```shell
-sudo ./adaptibrew
+coming soon
 ```
 
 ###Prior Work and Libraries:
