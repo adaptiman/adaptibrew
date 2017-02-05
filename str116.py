@@ -5,7 +5,11 @@ import time
 import binascii
 
 def _write_message(data):
-    usart = serial.Serial (settings.port,settings.baudrate)
+    try:
+        usart = serial.Serial (settings.port,settings.baudrate)
+    except IOError as e :
+        print("Failed to create serial object. ({})".format(e))
+
     usart.timeout = settings.timeout
     message_bytes = data.decode("hex")
     try:
@@ -21,13 +25,13 @@ def _write_message_with_response(data):
     message_bytes = data.decode("hex")
     try:
         usart.write(message_bytes)
-        #print usart.is_open  # True for opened
-        if usart.is_open:
+        #print usart.open  # True for opened
+        if usart.open:
             time.sleep(0.5)
             size = usart.inWaiting()
             if size:
                 data = usart.read(size)
-                #print binascii.hexlify(data)
+                print binascii.hexlify(data)
             else:
                 print('no data')
         else:
