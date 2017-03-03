@@ -1,4 +1,4 @@
-# adaptibrew
+#Adaptibrew
 #####Author: David Sweeney
 #####Email:  me@adaptiman.com
 
@@ -8,18 +8,17 @@ Adaptibrew is a Python based toolset used to control various processes in my cus
 ###License:
 #####Author: David Sweeney
 #####Email:  me@adaptiman.com
-adaptibrew is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International license [Copy Found Here](http://creativecommons.org/licenses/by-nc-sa/4.0/)
+Adaptibrew is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International license [Copy Found Here](http://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 ###Users/Audience:
  * Homebrewers
- * Programers
+ * Programmers
  * Tinkerers
 
 This project is aimed at any tech savvy individuals who want to get into home brewing or are looking for help to automate their home brewing process.
 
 ###Components Used:
  * [5- Pack WaterProof Temperature Sensors](http://www.amazon.com/gp/product/B00EU70ZL8/ref=oh_aui_detailpage_o02_s00?ie=UTF8&psc=1)
-
 
 ###Setup:
 The newer raspian images do not have the correct settings in the config. You must add the following line to your boot config if it is not present.
