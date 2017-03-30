@@ -1,3 +1,4 @@
+# This should happen on system powerup
 PowerOn
 	turn PID off
 	turn pump off
