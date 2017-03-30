@@ -7,3 +7,5 @@ try:
     instrument.stop()
 except:
     raise
+
+print("PID off")
