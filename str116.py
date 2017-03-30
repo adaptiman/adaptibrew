@@ -75,7 +75,7 @@ def get_relay(relaynumber):
     else:
         return False
 
-def get_relay_status():
+def get_relays_status():
     #command to get the status of all of the relays in an array.
     #format is
     #MA0, MA1, 0x07, 0x14, CN, start number output, number of outputs, CS, MAE
