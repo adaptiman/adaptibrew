@@ -2,7 +2,6 @@
 ##### Author: David Sweeney
 ##### Email:  me@adaptiman.com
 
-
 ### Overview:
 Adaptibrew is a Python based toolset used to control various processes in my custom brewery. The toolset uses a RPiv.2 processor coupled with an RS485 shield used to control various electrical valves and process devices such as the Omega CN7500 proportional PID controller (used to control RIMS).
 
