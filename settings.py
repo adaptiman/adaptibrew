@@ -12,8 +12,11 @@ MA1 = 'AA' #master1 byte
 MAE = '77' #master end byte
 CN  = '02'  #hex byte for controller number
 # these are relay numbers on the STR116 board and a custom to each installation
+# on to boiler, off to mash
 spargeToMashRelay = 0
+# on & off
 spargeRelay = 1
+# on to mash, off to boil
 rimsToMashRelay = 2
 pumpRelay = 3
 DEBUG = False
