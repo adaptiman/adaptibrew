@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+import sys
 
 def calc_strike_temp(WaterVolInQuarts, GrainMassInPounds, GrainTemp, MashTemp):
     WaterToGrainRatio = WaterVolInQuarts / GrainMassInPounds
