@@ -4,7 +4,7 @@ PowerOn
 	turn pump off
 	turn RIMS relay ON
 	display status of all relays
-  display status of RIMS
+  display status of PID/RIMS
 
 Heat Strike Water
 	Confirm strike water is in the mash tun -> response
