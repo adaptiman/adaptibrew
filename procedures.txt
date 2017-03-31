@@ -20,20 +20,20 @@ Heat Strike Water
 	measure current strike water temp and save
 	calculate strike temp
 	set PID to strike temp
-	when strike temp is reached, sound alarm
+	when strike temp is reached, ping slack
 
 Mash
 	prompt to enter mash temp -> response
 	prompt to enter mash time (min) -> response
 	set PID SV to mash temp
 	begin mash timer
-	when timer expires, sound alarm
+	when timer expires, ping slack
 
 Mashout
 	prompt to enter mashout temp -> response
 	set PID SV to mashout temp
 	monitor mash temp
-	when mashout temp is reached ->sound alarm
+	when mashout temp is reached -> ping slack
 
 Sparge
 	prompt that sparge water is heated to correct temp ->response
