@@ -6,6 +6,8 @@ PowerOn
 	display status of all relays
   display status of PID/RIMS
 
+
+# At all times when the PID is on, the pump is on
 Heat Strike Water
 	Confirm strike water is in the mash tun -> response
 	confirm return manifold is in the mash tun -> response
@@ -14,31 +16,47 @@ Heat Strike Water
 	prompt for pump emergency stop (spacebar)
 	wait 30 seconds
 	confirm that strike water is circulating well -> response
-	input volume of water
-	input volume of grain
-	input desired mash temp
+	calculate strike temp
 	measure current strike water temp and save
 	calculate strike temp
 	set PID to strike temp
 	when strike temp is reached, ping slack
 
+Dough In
+	turn pump off
+	turn PID off
+	pour in grain
+
 Mash
 	prompt to enter mash temp -> response
-	prompt to enter mash time (min) -> response
-	set PID SV to mash temp
+	set SV to the mash temp
+	prompt to enter mash time (min) -> response # default 60 mins
+	confirm RIMS relay set to ON
+	# Dont start timer until mash temp is reached
 	begin mash timer
-	when timer expires, ping slack
+	when timer expires, ping slack # manually check for starch
 
-Mashout
+Mashout # same as mash without time # kills the enzymes
+	prompt to heat sparge water manually
 	prompt to enter mashout temp -> response
 	set PID SV to mashout temp
 	monitor mash temp
 	when mashout temp is reached -> ping slack
 
 Sparge
-	prompt that sparge water is heated to correct temp ->response
+	prompt that sparge water is heated to correct temp -> response
+	turn RIMS relay off (redirect to boil tun)
 	turn on sparge relay
-	wait 15 seconds
+	wait 30 seconds
 	turn off RIMS relay (redirects to boil tun)
 	prompt to check the sparge balance (OK)
-	turn off sparge when boil kettle is at full volume
+	wait until intervention
+	turn off PID
+	turn off pump
+	turn off sparge when boil tun is at full volume
+
+Topping Off
+	divert sparge tank to boil
+	wait 15
+	turn on sparge tank
+	wait for intervention to turn off sparge
