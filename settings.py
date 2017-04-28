@@ -29,7 +29,7 @@ CN = '02'
 relays = {
     "hltToMash": 0,
     "hlt": 1,
-    "rimsToMash": 2
+    "rimsToMash": 2,
     "pump": 3
 }
 DEBUG = False
