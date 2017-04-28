@@ -3,7 +3,7 @@ import minimalmodbus
 import omegacn7500
 import settings
 
-instr = omegacn7500.OmegaCN7500(settings.port,settings.rimsaddressint)
+instr = omegacn7500.OmegaCN7500(settings.port,settings.rimsAddress)
 # port name, slave address
 
 minimalmodbus._print_out( 'Control:                {0}'.format(  instr.get_control_mode()    ))

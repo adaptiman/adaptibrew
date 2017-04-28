@@ -2,5 +2,5 @@
 import omegacn7500
 import settings
 
-instrument = omegacn7500.OmegaCN7500(settings.port,settings.rimsaddressint) # port name, slave address
+instrument = omegacn7500.OmegaCN7500(settings.port,settings.rimsAddress) # port name, slave address
 print instrument.is_running()
