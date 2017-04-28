@@ -26,14 +26,10 @@ CN = '02'
 
 # these are relay numbers on the STR116 board and should be custom for each installation
 # on to boiler, off to mash
-hltToMash = 0
-
-# on & off
-hlt = 1
-
-# on to mash, off to boil
-rimsToMash = 2
-
-pump = 3
-
+relays = {
+    "hltToMash": 0,
+    "hlt": 1,
+    "rimsToMash": 2
+    "pump": 3
+}
 DEBUG = False
