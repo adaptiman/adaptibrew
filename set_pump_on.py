@@ -2,5 +2,5 @@
 import str116
 import settings
 
-str116.set_relay(settings.pumpRelay,1)
+str116.set_relay(settings.relays['pump'],1)
 print("pump on")

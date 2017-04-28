@@ -6,7 +6,7 @@ import binascii
 
 def _write_message(data):
     try:
-        usart = serial.Serial (settings.port,settings.baudrate)
+        usart = serial.Serial (settings.port,settings.baudRate)
     except IOError as e :
         print("Failed to create serial object. ({})".format(e))
 
@@ -20,7 +20,7 @@ def _write_message(data):
         print("Failed to write to the port. ({})".format(e))
 
 def _write_message_with_response(data):
-    usart = serial.Serial (settings.port,settings.baudrate)
+    usart = serial.Serial (settings.port,settings.baudRate)
     usart.timeout = settings.timeout
     message_bytes = data.decode("hex")
     try:
@@ -109,7 +109,7 @@ def set_baudrate():
     will not work. This is mainly a setup function that can be used to
     initialize the controller.
     """
-    #usart = serial.Serial (settings.port,settings.baudrate) #current settings
+    #usart = serial.Serial (settings.port,settings.baudRate) #current settings
     d = {'300':0,'600':1,'1200':2,'2400':3,'4800':4,'9600':5,'19200':6, \
         '38400':7,'57600':8,'115200':9}
     print(d)

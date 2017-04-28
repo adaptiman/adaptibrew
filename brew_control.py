@@ -6,10 +6,10 @@ import settings
 import sys
 
 # Connect to the PID instrument to get status values
-instr = omegacn7500.OmegaCN7500(settings.port,settings.rimsaddressint)
+instr = omegacn7500.OmegaCN7500(settings.port,settings.rimsAddress)
 
 # Connect to str116 API to check relay status
-# EXAMPLSE: str116.get_relay(settings.pumpRelay)
+# EXAMPLSE: str116.get_relay(settings.relays['pump'])
 
 def main_loop():
     '''Show the main menu interface and handle user instructions'''
@@ -37,7 +37,7 @@ def main_loop():
 
 
 def show_main_menu():
-    PUMP_STATE = 'ON' if str116.get_relay(settings.pumpRelay) else 'OFF'
+    PUMP_STATE = 'ON' if str116.get_relay(settings.relays['pump']) else 'OFF'
     PID_STATE = 'ON' if instr.is_running() else 'OFF'
     TARGET_TEMP = instr.get_setpoint()
     CURRENT_TEMP = instr.get_pv()
@@ -54,9 +54,9 @@ Please select an option:
 '''.format(PUMP_STATE, PID_STATE, TARGET_TEMP, CURRENT_TEMP)
 
 def toggle_relay_menu():
-    STATE_0 = 'ON' if str116.get_relay(settings.spargeToMashRelay) else 'OFF'
-    STATE_1 = 'ON' if str116.get_relay(settings.spargeRelay) else 'OFF'
-    STATE_2 = 'ON' if str116.get_relay(settings.rimsToMashRelay) else 'OFF'
+    STATE_0 = 'ON' if str116.get_relay(settings.relays["hltToMash"]) else 'OFF'
+    STATE_1 = 'ON' if str116.get_relay(settings.relays["hlt"]) else 'OFF'
+    STATE_2 = 'ON' if str116.get_relay(settings.relays["rimsToMash"]) else 'OFF'
     print '''
 Please select an option:
 
@@ -89,22 +89,22 @@ def toggle_relay(relay_address):
         print 'INVALID RELAY ADDRESS'
 
 def toggle_pump():
-    if str116.get_relay(settings.pumpRelay):
+    if str116.get_relay(settings.relays['pump']):
         print 'Turning pump OFF . . . ',
-        str116.set_relay(settings.pumpRelay, 0)
+        str116.set_relay(settings.relays['pump'], 0)
     else:
         print 'Turning pump ON . . . ',
-        str116.set_relay(settings.pumpRelay, 1)
+        str116.set_relay(settings.relays['pump'], 1)
     print 'DONE'
 
 def set_pump_on():
     print 'Turning pump ON . . . ',
-    str116.set_relay(settings.pumpRelay, 1)
+    str116.set_relay(settings.relays['pump'], 1)
     print 'DONE'
 
 def set_pump_off():
     print 'Turning pump OFF . . . ',
-    str116.set_relay(settings.pumpRelay, 0)
+    str116.set_relay(settings.relays['pump'], 0)
     print 'DONE'
 
 def toggle_pid():
@@ -145,24 +145,24 @@ def detect_stage():
     pass
 
 def set_RIMS_stage():
-    # spargeRelay OFF, rimsToMashRelay ON, pump ON, PID ON, target temp 150
+    # hlt OFF, rimsToMash ON, pump ON, PID ON, target temp 150
     # "Directing RIMS valve to mash tun"
     pass
 
 
 def set_sparge_stage():
-    # set relay 1 (spargeRelay) to ON, wait 10 seconds
+    # set relay 1 (hlt) to ON, wait 10 seconds
     print 'Setting sparge valve ON ',
-    str116.set_relay(settings.spargeRelay, 1)
+    str116.set_relay(settings.relays['hlt'], 1)
     import time
     for i in range(1,11):
         print ',',
         time.sleep(1)
     print ' DONE'
 
-    # set relay 2 (rimsToMashRelay) to OFF
+    # set relay 2 (rimsToMash) to OFF
     print 'Directing RIMS valve to boil tun . . . ',
-    str116.set_relay(settings.rimsToMashRelay, 0)
+    str116.set_relay(settings.relays['rimsToMash'], 0)
     print 'DONE'
 
     # ensure that PID is ON
@@ -173,7 +173,7 @@ def set_sparge_stage():
     # TODO: set temp according to calculator
 
 def set_boil_stage():
-    # pump OFF, PID OFF, spargeRelay OFF
+    # pump OFF, PID OFF, hlt OFF
     pass
 
 

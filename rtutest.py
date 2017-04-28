@@ -3,7 +3,7 @@ import serial
 import time
 import settings
 
-usart = serial.Serial (settings.port,settings.baudrate)
+usart = serial.Serial (settings.port,settings.baudRate)
 bytestring = "55AA0817020008012A77"
 message_bytes = bytestring.decode("hex")
 usart.write(message_bytes)
