@@ -5,4 +5,4 @@ import time
 
 instrument = omegacn7500.OmegaCN7500(settings.port,settings.rimsAddress) # port name, slave address
 
-json.dump(instrument.get_setpoint(), sys.stdout)
+print instrument.get_setpoint() # print temperature

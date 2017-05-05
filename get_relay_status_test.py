@@ -1,4 +1,4 @@
 #!/usr/bin/env python
-import str116, sys, json
+import str116
 
-json.dump(main(str116.get_relays_status()), sys.stdout)
+str116.get_relays_status()
