@@ -1,8 +1,6 @@
 #!/usr/bin/env python
-import omegacn7500
-import settings
-import time
+import omegacn7500, settings, time, json, sys
 
 instrument = omegacn7500.OmegaCN7500(settings.port,settings.rimsAddress) # port name, slave address
 
-print instrument.get_pv() # print temperature
+json.dump(instrument.get_pv(), sys.stdout)

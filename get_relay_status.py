@@ -1,8 +1,7 @@
-import str116
-import sys
+import str116, sys, json
 
 if str116.get_relay(int(sys.argv[1])):
-    print("relay 0" + sys.argv[1] + ": on")
+    json.dump({sys.argv[1]: True}, sys.stdout)
 else:
-    print("relay 0" + sys.argv[1] + ": off")
+    json.dump({sys.argv[1]: False}, sys.stdout)
     pass
