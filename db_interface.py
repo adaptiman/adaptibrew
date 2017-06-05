@@ -1,37 +1,28 @@
-# This is about to go away probably
-
-
+from peewee import *
+from os.path import expanduser
+from exchange import Info
 import exchange
-import time
 import omegacn7500
 import settings
 import str116
+import time
 
-# pv
-# instrument.get_pv()
+omega = omegacn7500.OmegaCN7500(settings.port, settings.rimsAddress)
 
-# sv
-# WHY IS THIS NAMED LIKE THIS UGH ???
-# instrument.get_setpoint()
+db = exchange.connect()
 
-# is pid running?
-# instrument.is_running()
-
-# Relay status
-# str116.get_relays_status()
-
-instrument = omegacn7500.OmegaCN7500(settings.port, settings.rimsAddress)
-exchange.delete_db
-con = exchange.connect()
-
-exchange.create_info_table(con)
+if not Info.table_exists():
+    db.create_tables([Info])
 
 while True:
-    exchange.insert(con, "pv", instrument.get_pv())
-    exchange.insert(con, "sv", instrument.get_setpoint())
-    exchange.insert(con, "pid_running", instrument.is_running())
-    # exchange.insert(con, "", instrument.get_pv())
-    time.sleep(1)
-    print exchange.get_info(con)
-
-con.close()
+    info = Info(
+        pv = omega.get_pv(),
+        sv = omega.get_setpoint(),
+        pid_running = omega.is_running(),
+        hltToMash = str116.get_relay(settings.relays['hltToMash']),
+        hlt = str116.get_relay(settings.relays['hlt']),
+        rimsToMash = str116.get_relay(settings.relays['rimsToMash']),
+        pump = str116.get_relay(settings.relays['pump'])
+    )
+    info.save()
+    time.sleep(3)
