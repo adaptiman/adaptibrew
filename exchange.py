@@ -21,12 +21,20 @@ def create_brewer_dir():
         os.makedirs(brewer_dir)
 
 def create_info_table(con):
-    return con.execute("CREATE TABLE IF NOT EXISTS info(pv INT NOT NULL);")
+    return con.execute(
+        "CREATE TABLE IF NOT EXISTS info(pv INT NOT NULL, time timestamp default (strftime('%s', 'now')));"
+    )
 
 def get_info(con):
     con.execute("SELECT * FROM info;")
     return con.fetchall()
 
-def insert(con, table, column, value):
-    con.execute("INSERT INTO {} ({}) VALUES ({});".format(table, column, value))
+def insert(con, column, value):
+    con.execute("INSERT INTO info ({}) VALUES ({});".format(column, value))
 
+def delete_db():
+    if os.path.isfile(db_dir + db_file):
+        os.remove(db_dir + db_file)
+        return True
+    else:
+        return False

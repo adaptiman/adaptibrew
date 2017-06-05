@@ -26,15 +26,22 @@ calc_strike_temp	../brewcalculators.py	/^def calc_strike_temp(WaterVolInQuarts, 
 choice	../brew_control.py	/^    choice = input("Select a valve from the choices above: ")$/;"	kind:variable	line:70
 click	../poweron.py	/^import click$/;"	kind:namespace	line:12
 close_all.py	../close_all.py	1;"	kind:file	line:1
-connect	../exchange.py	/^def connect():$/;"	kind:function	line:4
-connection	../db_interface.py	/^connection = exchange.connect()$/;"	kind:variable	line:3
+con	../db_interface.py	/^con = exchange.connect()$/;"	kind:variable	line:4
+connect	../exchange.py	/^def connect():$/;"	kind:function	line:8
+create_brewer_dir	../exchange.py	/^def create_brewer_dir():$/;"	kind:function	line:18
+create_db_dir	../exchange.py	/^def create_db_dir():$/;"	kind:function	line:14
+create_info_table	../exchange.py	/^def create_info_table(con):$/;"	kind:function	line:23
 data	../setrelayaddress.py	/^            data = usart.read(size)$/;"	kind:variable	line:16
 data	../setrelayaddress.py	/^data = "55AA08060100024D5E77" #Sets all devices on the bus to address 2$/;"	kind:variable	line:6
+db_dir	../exchange.py	/^db_dir = expanduser("~") + "\/.brewer\/db\/"$/;"	kind:variable	line:5
+db_file	../exchange.py	/^db_file = "exchange.db"$/;"	kind:variable	line:6
 db_interface.py	../db_interface.py	1;"	kind:file	line:1
+delete_db	../exchange.py	/^def delete_db():$/;"	kind:function	line:35
 detect_stage	../brew_control.py	/^def detect_stage():$/;"	kind:function	line:144
 exchange	../db_interface.py	/^import exchange$/;"	kind:namespace	line:1
 exchange.py	../exchange.py	1;"	kind:file	line:1
-expanduser	../exchange.py	/^from os.path import expanduser$/;"	kind:namespace	line:2
+expanduser	../exchange.py	/^from os.path import expanduser$/;"	kind:namespace	line:3
+get_info	../exchange.py	/^def get_info(con):$/;"	kind:function	line:28
 get_pid_status.py	../get_pid_status.py	1;"	kind:file	line:1
 get_pv.py	../get_pv.py	1;"	kind:file	line:1
 get_pv_loop.py	../get_pv_loop.py	1;"	kind:file	line:1
@@ -44,6 +51,7 @@ get_relay_status_test.py	../get_relay_status_test.py	1;"	kind:file	line:1
 get_relays_status	../str116.py	/^def get_relays_status():$/;"	kind:function	line:78
 get_strike_temp.py	../get_strike_temp.py	1;"	kind:file	line:1
 get_sv.py	../get_sv.py	1;"	kind:file	line:1
+insert	../exchange.py	/^def insert(con, column, value):$/;"	kind:function	line:32
 instr	../brew_control.py	/^instr = omegacn7500.OmegaCN7500(settings.port,settings.rimsAddress)$/;"	kind:variable	line:9
 instr	../get_pid_status.py	/^instr = omegacn7500.OmegaCN7500(settings.port,settings.rimsAddress)$/;"	kind:variable	line:6
 instrument	../get_pv.py	/^instrument = omegacn7500.OmegaCN7500(settings.port,settings.rimsAddress) # port name, slave address$/;"	kind:variable	line:6
@@ -78,6 +86,7 @@ omegacn7500	../set_pid_off.py	/^import omegacn7500$/;"	kind:namespace	line:2
 omegacn7500	../set_pid_on.py	/^import omegacn7500$/;"	kind:namespace	line:2
 omegacn7500	../set_sv.py	/^import omegacn7500$/;"	kind:namespace	line:2
 omegacn7500	../testomega.py	/^import omegacn7500$/;"	kind:namespace	line:2
+os	../exchange.py	/^import os$/;"	kind:namespace	line:2
 port	../setbaudrate.py	/^port = "\/dev\/ttyAMA0"$/;"	kind:variable	line:5
 port	../settings.py	/^port = "\/dev\/ttyAMA0"$/;"	kind:variable	line:4
 poweron.py	../poweron.py	1;"	kind:file	line:1
@@ -153,6 +162,7 @@ temperature	../testcn7500.py	/^temperature = instrument.read_register(289, 1) # 
 testcn7500.py	../testcn7500.py	1;"	kind:file	line:1
 testomega.py	../testomega.py	1;"	kind:file	line:1
 time	../brew_control.py	/^    import time$/;"	kind:namespace	line:157
+time	../db_interface.py	/^import time$/;"	kind:namespace	line:2
 time	../get_pv.py	/^import time$/;"	kind:namespace	line:4
 time	../get_pv_loop.py	/^import time$/;"	kind:namespace	line:4
 time	../get_sv.py	/^import time$/;"	kind:namespace	line:4
