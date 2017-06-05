@@ -29,4 +29,4 @@ def get_info(con):
 
 def insert(con, table, column, value):
     con.execute("INSERT INTO {} ({}) VALUES ({});".format(table, column, value))
-    # cur.execute("""INSERT INTO perioder(fra, id, til) VALUES (?,?,?);""", (fra, per_id, til))
+
