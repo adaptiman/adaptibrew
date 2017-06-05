@@ -22,7 +22,7 @@ def create_brewer_dir():
 
 def create_info_table(con):
     return con.execute(
-        "CREATE TABLE IF NOT EXISTS info(pv INT NOT NULL, time timestamp default (strftime('%s', 'now')));"
+        "CREATE TABLE IF NOT EXISTS info(pv INT NOT NULL, sv INT NOT NULL, pid_running INT NOT NULL, time timestamp default (strftime('%s', 'now')));"
     )
 
 def get_info(con):
