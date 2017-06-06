@@ -77,7 +77,12 @@ def write_latest_data():
         pump = str116.get_relay(settings.relays['pump']),
         timestamp = time.time(),
     )
-    info.save()
+    db.begin()
+    try:
+        info.save()
+    except ErrorSavingData:
+        db.rollback()
+    db.commit()
 
 def check_for_requests():
     try:

@@ -45,6 +45,7 @@ database	../exchange.py	/^        database = db$/;"	kind:variable	line:35
 db	../db_interface.py	/^db = exchange.connect()$/;"	kind:variable	line:8
 db	../exchange.py	/^db = SqliteDatabase(db_dir + db_file)$/;"	kind:variable	line:11
 db	../get_db_test.py	/^db = exchange.connect()$/;"	kind:variable	line:4
+db_benchmark.py	../db_benchmark.py	1;"	kind:file	line:1
 db_dir	../exchange.py	/^db_dir = expanduser("~\/.brewer\/db\/")$/;"	kind:variable	line:9
 db_file	../exchange.py	/^db_file = "exchange.db"$/;"	kind:variable	line:10
 db_interface.py	../db_interface.py	1;"	kind:file	line:1
