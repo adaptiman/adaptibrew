@@ -197,8 +197,8 @@ time	../setbaudrate.py	/^import time$/;"	kind:namespace	line:3
 time	../setrelayaddress.py	/^import time$/;"	kind:namespace	line:3
 time	../str116.py	/^import time$/;"	kind:namespace	line:4
 timeout	../settings.py	/^timeout = 2$/;"	kind:variable	line:13
-timestamp	../db_interface.py	/^        timestamp = int(time.time())$/;"	kind:variable	line:27
-timestamp	../exchange.py	/^    timestamp = DateTimeField()$/;"	kind:variable	line:39
+timestamp	../db_interface.py	/^        timestamp = time.time()$/;"	kind:variable	line:27
+timestamp	../exchange.py	/^    timestamp = DecimalField()$/;"	kind:variable	line:39
 toggle_pid	../brew_control.py	/^def toggle_pid():$/;"	kind:function	line:110
 toggle_pump	../brew_control.py	/^def toggle_pump():$/;"	kind:function	line:91
 toggle_relay	../brew_control.py	/^def toggle_relay(relay_address):$/;"	kind:function	line:79
