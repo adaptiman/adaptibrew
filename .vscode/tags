@@ -108,7 +108,7 @@ port	../setbaudrate.py	/^port = "\/dev\/ttyAMA0"$/;"	kind:variable	line:5
 port	../settings.py	/^port = "\/dev\/ttyAMA0"$/;"	kind:variable	line:4
 poweron.py	../poweron.py	1;"	kind:file	line:1
 print_settings.py	../print_settings.py	1;"	kind:file	line:1
-pump	../db_interface.py	/^        pump = str116.get_relay(settings.relays['pump'])$/;"	kind:variable	line:26
+pump	../db_interface.py	/^        pump = str116.get_relay(settings.relays['pump']),$/;"	kind:variable	line:26
 pump	../exchange.py	/^    pump = BooleanField()$/;"	kind:variable	line:38
 pv	../db_interface.py	/^        pv = omega.get_pv(),$/;"	kind:variable	line:20
 pv	../exchange.py	/^    pv = DecimalField()$/;"	kind:variable	line:32
@@ -197,6 +197,7 @@ time	../setbaudrate.py	/^import time$/;"	kind:namespace	line:3
 time	../setrelayaddress.py	/^import time$/;"	kind:namespace	line:3
 time	../str116.py	/^import time$/;"	kind:namespace	line:4
 timeout	../settings.py	/^timeout = 2$/;"	kind:variable	line:13
+timestamp	../db_interface.py	/^        timestamp = int(time.time())$/;"	kind:variable	line:27
 timestamp	../exchange.py	/^    timestamp = DateTimeField()$/;"	kind:variable	line:39
 toggle_pid	../brew_control.py	/^def toggle_pid():$/;"	kind:function	line:110
 toggle_pump	../brew_control.py	/^def toggle_pump():$/;"	kind:function	line:91

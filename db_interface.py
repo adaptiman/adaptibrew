@@ -24,7 +24,7 @@ while True:
         hlt = str116.get_relay(settings.relays['hlt']),
         rimsToMash = str116.get_relay(settings.relays['rimsToMash']),
         pump = str116.get_relay(settings.relays['pump']),
-        timestamp = int(time.time())
+        timestamp = float(time.time())
     )
     info.save()
     time.sleep(3)
