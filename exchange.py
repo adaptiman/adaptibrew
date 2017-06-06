@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from peewee import *
 import os
 from os.path import expanduser
@@ -35,8 +36,6 @@ class Request(Model):
         database = db
 
 
-
-
 def connect():
     create_brewer_dir()
     create_db_dir()
@@ -60,7 +59,7 @@ def delete_db():
         return False
 
 def recent(timestamp):
-    if time.time() - 3 < timestamp:
+    if time.time() - 5 < timestamp:
         return True
     else:
         return False
