@@ -3,7 +3,6 @@ import exchange
 from exchange import Info
 import time
 
-
 db = exchange.connect()
 
 if not Info.table_exists():
