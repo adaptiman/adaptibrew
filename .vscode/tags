@@ -12,7 +12,7 @@ Info	../get_db_test.py	/^from exchange import Info$/;"	kind:namespace	line:2
 MA0	../settings.py	/^MA0 = '55'$/;"	kind:variable	line:16
 MA1	../settings.py	/^MA1 = 'AA'$/;"	kind:variable	line:19
 MAE	../settings.py	/^MAE = '77'$/;"	kind:variable	line:22
-Meta	../exchange.py	/^    class Meta:$/;"	kind:class	line:40
+Meta	../exchange.py	/^    class Meta:$/;"	kind:class	line:41
 NEW_TEMPERATURE	../testcn7500.py	/^NEW_TEMPERATURE = 95$/;"	kind:variable	line:11
 _get_checksum	../str116.py	/^def _get_checksum(data):$/;"	kind:function	line:43
 _write_message	../str116.py	/^def _write_message(data):$/;"	kind:function	line:7
@@ -35,7 +35,7 @@ create_brewer_dir	../exchange.py	/^def create_brewer_dir():$/;"	kind:function	li
 create_db_dir	../exchange.py	/^def create_db_dir():$/;"	kind:function	line:20
 data	../setrelayaddress.py	/^            data = usart.read(size)$/;"	kind:variable	line:16
 data	../setrelayaddress.py	/^data = "55AA08060100024D5E77" #Sets all devices on the bus to address 2$/;"	kind:variable	line:6
-database	../exchange.py	/^        database = db$/;"	kind:variable	line:41
+database	../exchange.py	/^        database = db$/;"	kind:variable	line:42
 db	../db_interface.py	/^db = exchange.connect()$/;"	kind:variable	line:13
 db	../exchange.py	/^db = SqliteDatabase(db_dir + db_file)$/;"	kind:variable	line:7
 db	../get_db_test.py	/^db = exchange.connect()$/;"	kind:variable	line:4
@@ -111,7 +111,7 @@ print_settings.py	../print_settings.py	1;"	kind:file	line:1
 pump	../db_interface.py	/^        pump = str116.get_relay(settings.relays['pump'])$/;"	kind:variable	line:26
 pump	../exchange.py	/^    pump = BooleanField()$/;"	kind:variable	line:38
 pv	../db_interface.py	/^        pv = omega.get_pv(),$/;"	kind:variable	line:20
-pv	../exchange.py	/^    pv = CharField()$/;"	kind:variable	line:32
+pv	../exchange.py	/^    pv = DecimalField()$/;"	kind:variable	line:32
 python_tester.py	../python_tester.py	1;"	kind:file	line:1
 relay_test.py	../relay_test.py	1;"	kind:file	line:1
 relays	../settings.py	/^relays = {$/;"	kind:variable	line:29
@@ -176,7 +176,7 @@ str116	../set_pump_on.py	/^import str116$/;"	kind:namespace	line:2
 str116	../set_relay.py	/^import str116$/;"	kind:namespace	line:1
 str116.py	../str116.py	1;"	kind:file	line:1
 sv	../db_interface.py	/^        sv = omega.get_setpoint(),$/;"	kind:variable	line:21
-sv	../exchange.py	/^    sv = CharField()$/;"	kind:variable	line:33
+sv	../exchange.py	/^    sv = DecimalField()$/;"	kind:variable	line:33
 switchAddress	../settings.py	/^switchAddress = 2$/;"	kind:variable	line:9
 sys	../brew_control.py	/^import sys$/;"	kind:namespace	line:6
 sys	../brewcalculators.py	/^import sys$/;"	kind:namespace	line:2
@@ -197,6 +197,7 @@ time	../setbaudrate.py	/^import time$/;"	kind:namespace	line:3
 time	../setrelayaddress.py	/^import time$/;"	kind:namespace	line:3
 time	../str116.py	/^import time$/;"	kind:namespace	line:4
 timeout	../settings.py	/^timeout = 2$/;"	kind:variable	line:13
+timestamp	../exchange.py	/^    timestamp = DateTimeField()$/;"	kind:variable	line:39
 toggle_pid	../brew_control.py	/^def toggle_pid():$/;"	kind:function	line:110
 toggle_pump	../brew_control.py	/^def toggle_pump():$/;"	kind:function	line:91
 toggle_relay	../brew_control.py	/^def toggle_relay(relay_address):$/;"	kind:function	line:79
