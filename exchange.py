@@ -6,12 +6,35 @@ import settings
 import str116
 import time
 
-
-
 db_dir = expanduser("~/.brewer/db/")
 db_file = "exchange.db"
 db = SqliteDatabase(db_dir + db_file)
 omega = omegacn7500.OmegaCN7500(settings.port, settings.rimsAddress)
+
+
+# Models
+class Info(Model):
+    pv = DecimalField()
+    sv = DecimalField()
+    pid_running = BooleanField()
+    hltToMash = BooleanField()
+    hlt = BooleanField()
+    rimsToMash = BooleanField()
+    pump = BooleanField()
+    timestamp = DecimalField()
+
+    class Meta:
+        database = db
+
+class Request(Model):
+    method = CharField()
+    args = CharField()
+    timestamp = DecimalField()
+
+    class Meta:
+        database = db
+
+
 
 
 def connect():
@@ -42,21 +65,6 @@ def recent(timestamp):
     else:
         return False
 
-class Info(Model):
-    pv = DecimalField()
-    sv = DecimalField()
-    pid_running = BooleanField()
-    hltToMash = BooleanField()
-    hlt = BooleanField()
-    rimsToMash = BooleanField()
-    pump = BooleanField()
-    timestamp = DecimalField()
-    is_request = BooleanField()
-    request = CharField(null = True)
-    args = CharField(null = True)
-
-    class Meta:
-        database = db
 
 def write_latest_data():
     info = Info(
@@ -68,18 +76,15 @@ def write_latest_data():
         rimsToMash = str116.get_relay(settings.relays['rimsToMash']),
         pump = str116.get_relay(settings.relays['pump']),
         timestamp = time.time(),
-        is_request = False,
-        request = None,
-        args = None
     )
     info.save()
 
 def check_for_requests():
     try:
-        info = Info.select(fn.MAX(Info.timestamp)).where(Info.is_request == True).get()
-        if recent(info.timestamp):
+        request = Request.select(Request, fn.MAX(Request.timestamp)).get()
+        if recent(request.timestamp):
             # Execute request
-            execute(info.request, info.args)
+            execute(request.method, request.args)
     except Info.DoesNotExist:
         return False
 
