@@ -20,7 +20,7 @@ if not Request.table_exists():
 # )
 # exchange.execute(request.method, request.args)
 
-# exchange.check_for_requests()
 while True:
     exchange.write_latest_data()
+    exchange.check_for_requests()
     time.sleep(0.5)
