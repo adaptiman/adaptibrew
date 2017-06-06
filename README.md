@@ -35,6 +35,10 @@ coming soon
 ```
 
 ### Prior Work and Libraries:
+  To install dependencies, run:
+  ```
+  pip install -r requirements.txt
+  ```
  * [WiringPi](http://wiringpi.com) - Raspberry Pi GPIO library for C
  * [MinimalModbus](https://minimalmodbus.readthedocs.io/en/master/) - Python library to communicate over RS485. Also has a custom driver for the Omega CN7500 PID controller.
 
