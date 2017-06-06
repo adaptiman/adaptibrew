@@ -36,7 +36,7 @@ class Info(Model):
     hlt = BooleanField()
     rimsToMash = BooleanField()
     pump = BooleanField()
-    timestamp = DateTimeField()
+    timestamp = DecimalField()
 
     class Meta:
         database = db
