@@ -29,13 +29,14 @@ def delete_db():
         return False
 
 class Info(Model):
-    pv = CharField()
-    sv = CharField()
+    pv = DecimalField()
+    sv = DecimalField()
     pid_running = BooleanField()
     hltToMash = BooleanField()
     hlt = BooleanField()
     rimsToMash = BooleanField()
     pump = BooleanField()
+    timestamp = DateTimeField()
 
     class Meta:
         database = db
