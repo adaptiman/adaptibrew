@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from peewee import *
 from os.path import expanduser
 from exchange import Info
