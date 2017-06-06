@@ -3,5 +3,6 @@ from exchange import Info
 
 db = exchange.connect()
 
-info = Info.get()
-print info.pv
+while True:
+    info = Info.get()
+    print info.pv
