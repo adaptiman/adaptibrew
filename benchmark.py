@@ -27,4 +27,4 @@ def get_data_for_sqlite():
 
 if __name__ == '__main__':
     import timeit
-    print(timeit.timeit("read_request_from_db()", setup="from __main__ import read_request_from_db", number=1))
+    print(timeit.timeit("get_data_for_sqlite()", setup="from __main__ import get_data_for_sqlite", number=100))

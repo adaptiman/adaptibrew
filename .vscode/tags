@@ -57,7 +57,7 @@ exchange	../get_db_test.py	/^import exchange$/;"	kind:namespace	line:1
 exchange.py	../exchange.py	1;"	kind:file	line:1
 execute	../exchange.py	/^def execute(request, args=""):$/;"	kind:function	line:99
 expanduser	../exchange.py	/^from os.path import expanduser$/;"	kind:namespace	line:4
-get_data_from_hardware	../benchmark.py	/^def get_data_from_hardware():$/;"	kind:function	line:16
+get_data_for_sqlite	../benchmark.py	/^def get_data_for_sqlite():$/;"	kind:function	line:17
 get_db_test.py	../get_db_test.py	1;"	kind:file	line:1
 get_pid_status.py	../get_pid_status.py	1;"	kind:file	line:1
 get_pv.py	../get_pv.py	1;"	kind:file	line:1
@@ -120,8 +120,8 @@ print_settings.py	../print_settings.py	1;"	kind:file	line:1
 pump	../exchange.py	/^    pump = BooleanField()$/;"	kind:variable	line:24
 pv	../exchange.py	/^    pv = DecimalField()$/;"	kind:variable	line:18
 python_tester.py	../python_tester.py	1;"	kind:file	line:1
-read_from_db	../benchmark.py	/^    print(timeit.timeit("read_from_db()", setup="from __main__ import read_from_db", number=1))$/;"	kind:namespace	line:29
-read_from_db	../benchmark.py	/^def read_from_db():$/;"	kind:function	line:13
+read_request_from_db	../benchmark.py	/^    print(timeit.timeit("get_data_for_sqlite()", setup="from __main__ import read_request_from_db", number=1))$/;"	kind:namespace	line:30
+read_request_from_db	../benchmark.py	/^def read_request_from_db():$/;"	kind:function	line:13
 recent	../exchange.py	/^def recent(timestamp):$/;"	kind:function	line:61
 relay_test.py	../relay_test.py	1;"	kind:file	line:1
 relays	../settings.py	/^relays = {$/;"	kind:variable	line:29
@@ -209,7 +209,7 @@ time	../rtutest.py	/^import time$/;"	kind:namespace	line:3
 time	../setbaudrate.py	/^import time$/;"	kind:namespace	line:3
 time	../setrelayaddress.py	/^import time$/;"	kind:namespace	line:3
 time	../str116.py	/^import time$/;"	kind:namespace	line:4
-timeit	../benchmark.py	/^    import timeit$/;"	kind:namespace	line:28
+timeit	../benchmark.py	/^    import timeit$/;"	kind:namespace	line:29
 timeout	../settings.py	/^timeout = 2$/;"	kind:variable	line:13
 timestamp	../exchange.py	/^    timestamp = DecimalField()$/;"	kind:variable	line:25
 timestamp	../exchange.py	/^    timestamp = DecimalField()$/;"	kind:variable	line:33
@@ -221,5 +221,5 @@ usart	../close_all.py	/^usart = serial.Serial (settings.port,settings.baudRate)$
 usart	../rtutest.py	/^usart = serial.Serial (settings.port,settings.baudRate)$/;"	kind:variable	line:6
 usart	../setbaudrate.py	/^usart = serial.Serial (port,9600)$/;"	kind:variable	line:6
 usart	../setrelayaddress.py	/^usart = serial.Serial ("\/dev\/ttyAMA0",19200)$/;"	kind:variable	line:7
+write_data_to_db	../benchmark.py	/^def write_data_to_db():$/;"	kind:function	line:10
 write_latest_data	../exchange.py	/^def write_latest_data():$/;"	kind:function	line:68
-write_to_db	../benchmark.py	/^def write_to_db():$/;"	kind:function	line:10

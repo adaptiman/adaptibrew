@@ -27,7 +27,7 @@ def _write_message_with_response(data):
         usart.write(message_bytes)
         #print usart.open  # True for opened
         if usart.open:
-            # time.sleep(0.5)
+            time.sleep(0.02)
             size = usart.inWaiting()
             if size:
                 data = usart.read(size)
