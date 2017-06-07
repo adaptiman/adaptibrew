@@ -1,0 +1,24 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "0.1.0",
+  "command": "python",
+  "isShellCommand": true,
+  "tasks": [
+    {
+      "taskName": "benchmark",
+      "suppressTaskName": true,
+      "args": [
+        "benchmark.py"
+      ]
+    },
+    {
+      "taskName": "build (db loop)",
+      "suppressTaskName": true,
+      "isBuildCommand": true,
+      "args": [
+        "db_interface.py"
+      ]
+    }
+  ]
+}
