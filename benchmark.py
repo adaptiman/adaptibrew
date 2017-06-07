@@ -7,13 +7,14 @@ import str116
 
 omega = omegacn7500.OmegaCN7500(settings.port, settings.rimsAddress)
 
-def write_to_db():
+def write_data_to_db():
     exchange.write_latest_data()
 
-def read_from_db():
+def read_request_from_db():
     exchange.check_for_requests()
 
-def get_data_from_hardware():
+# Used to take ~2 seconds
+def get_data_for_sqlite():
     pv = omega.get_pv(),
     sv = omega.get_setpoint(),
     pid_running = omega.is_running(),
@@ -26,4 +27,4 @@ def get_data_from_hardware():
 
 if __name__ == '__main__':
     import timeit
-    print(timeit.timeit("read_from_db()", setup="from __main__ import read_from_db", number=1))
+    print(timeit.timeit("read_request_from_db()", setup="from __main__ import read_request_from_db", number=1))
